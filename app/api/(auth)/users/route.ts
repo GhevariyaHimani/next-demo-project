@@ -19,7 +19,7 @@ export const GET = async () => {
   }
 };
 
-export const POST = async (req: Request, res: Response) => {
+export const POST = async (req: Request) => {
   try {
     const body = await req.json();
     await connect();
@@ -40,7 +40,7 @@ export const POST = async (req: Request, res: Response) => {
   }
 };
 
-export const PATCH = async (req: Request, res: Response) => {
+export const PATCH = async (req: Request) => {
   try {
     const body = await req.json();
     const { userId, newUsername } = body;
@@ -80,7 +80,7 @@ export const PATCH = async (req: Request, res: Response) => {
   }
 };
 
-export const DELETE = async (req: Request, res: Response) => {
+export const DELETE = async (req: Request) => {
   try {
     // get data from search params
     const { searchParams } = new URL(req.url);

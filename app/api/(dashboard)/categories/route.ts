@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import { Types } from "mongoose";
 import Category from "@/lib/modals/category";
 
-export const GET = async (req: Request, res: Response) => {
+export const GET = async (req: Request) => {
   try {
     const { searchParams } = new URL(req.url);
     const userId = searchParams.get("userId");

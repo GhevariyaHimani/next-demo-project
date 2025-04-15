@@ -6,6 +6,8 @@ import { Types } from "mongoose";
 import { URL } from "url";
 import Blog from "@/lib/modals/blog";
 
+// export const GET = async (req: Request, context: { params: any }) 
+// const blogId = context.params.blog;
 export const GET = async (req: Request,  { params }: { params: Promise<{ blog: string; }>  }) => {
   const blogId = (await params).blog;
   try {

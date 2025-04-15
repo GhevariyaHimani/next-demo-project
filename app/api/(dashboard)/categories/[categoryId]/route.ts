@@ -3,8 +3,6 @@ import { NextResponse } from "next/server";
 import User from "@/lib/modals/user";
 import { Types } from "mongoose";
 import Category from "@/lib/modals/category";
-import { types } from "node:util";
-import { use } from "react";
 
 // export const PATCH = async (req: Request, context: { params: { categoryId: string } }) => {
 // const categoryId = context.params.categoryId; // part of url category/categoryId dynamic path
