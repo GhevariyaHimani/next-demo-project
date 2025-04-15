@@ -38,9 +38,9 @@ export const GET = async (req: Request) => {
 
     const blogs = await Blog.find(filter);
     return NextResponse.json(blogs);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.log("error", error);
-    return NextResponse.json("Error in get blogs " + error.message, {
+    return NextResponse.json("Error in get blogs ", {
       status: 500,
     });
   }
@@ -83,9 +83,9 @@ export const POST = async (req: Request) => {
     await newBlog.save();
 
     return NextResponse.json(newBlog);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.log("error", error);
-    return NextResponse.json("Error in create blogs " + error.message, {
+    return NextResponse.json("Error in create blogs ", {
       status: 500,
     });
   }

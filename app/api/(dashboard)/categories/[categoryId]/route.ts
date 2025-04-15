@@ -47,9 +47,9 @@ export const PATCH = async (
     );
 
     return NextResponse.json(updateCategory);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.log("error", error);
-    return NextResponse.json("Error in update category " + error.message, {
+    return NextResponse.json("Error in update category ", {
       status: 500,
     });
   }
@@ -76,9 +76,9 @@ export const DELETE = async (req: Request, { params }: { params: Promise<{ categ
     await Category.findByIdAndDelete(categoryId);
     return NextResponse.json("category deleted successfully");
   
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.log("error", error);
-    return NextResponse.json("Error in delete category " + error.message, {
+    return NextResponse.json("Error in delete category ", {
       status: 500,
     });
   }

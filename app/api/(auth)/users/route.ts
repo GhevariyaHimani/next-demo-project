@@ -1,9 +1,10 @@
 import connect from "@/lib/db";
 import User from "@/lib/modals/user";
 // for validation upon Id
-const objectId = require("mongoose").Types.ObjectId;
+// const objectId = require("mongoose").Types.ObjectId;
 import { Types } from "mongoose";
 import { NextResponse } from "next/server";
+const objectId = Types.ObjectId
 
 export const GET = async () => {
   try {
@@ -33,8 +34,8 @@ export const POST = async (req: Request) => {
       { status: 200 }
     );
 
-  } catch (error: any) {
-    return new NextResponse("Error in creating user:" + error.message, {
+  } catch (error: unknown) {
+    return new NextResponse("Error in creating user:", {
       status: 500,
     });
   }
@@ -72,9 +73,9 @@ export const PATCH = async (req: Request) => {
       JSON.stringify({ message: "User is updated", user: updateUser }),
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.log("error", error);
-    return new NextResponse("Error in updating user data: " + error.message, {
+    return new NextResponse("Error in updating user data: ", {
       status: 500,
     });
   }
@@ -112,9 +113,9 @@ export const DELETE = async (req: Request) => {
       JSON.stringify({ message: "user is deleted", user: deleteUser }),
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.log("error", error);
-    return new NextResponse("Error in updating user data: " + error.message, {
+    return new NextResponse("Error in updating user data: ", {
       status: 500,
     });
   }

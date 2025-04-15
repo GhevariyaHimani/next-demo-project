@@ -48,9 +48,9 @@ export const GET = async (req: Request,  { params }: { params: Promise<{ blog: s
     }
 
     return NextResponse.json(blog);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.log("error", error);
-    return NextResponse.json("Error in get blog " + error.message, {
+    return NextResponse.json("Error in get blog ", {
       status: 500,
     });
   }
@@ -95,9 +95,9 @@ export const PATCH = async (req: Request,  { params }: { params: Promise<{ blog:
       { new: true }
     );
     return NextResponse.json(updateBlog);
-  } catch (error: any) {
+  } catch (error : unknown) {
     console.log("error", error);
-    return NextResponse.json("Error in update blog " + error.message, {
+    return NextResponse.json("Error in update blog ", {
       status: 500,
     });
   }
@@ -136,9 +136,9 @@ export const DELETE = async (req: Request,  { params }: { params: Promise<{ blog
 
     const deleteBlog = await Blog.findByIdAndDelete(blogId);
     return NextResponse.json("blog deleted successfully");
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.log("error", error);
-    return NextResponse.json("Error in delete blog " + error.message, {
+    return NextResponse.json("Error in delete blog ", {
       status: 500,
     });
   }

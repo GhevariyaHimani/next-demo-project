@@ -28,9 +28,9 @@ export const GET = async (req: Request) => {
     });
 
     return NextResponse.json(categories);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.log("error", error);
-    return NextResponse.json("Error in get user's category: " + error.message, {
+    return NextResponse.json("Error in get user's category: ", {
       status: 500,
     });
   }
@@ -66,9 +66,9 @@ export const POST = async (req: Request) => {
     await newCategory.save();
 
     return NextResponse.json(newCategory);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.log("error", error);
-    return NextResponse.json("Error in creating category " + error.message, {
+    return NextResponse.json("Error in creating category ", {
       status: 500,
     });
   }
