@@ -12,9 +12,9 @@ export const GET = async () => {
     const users = await User.find();
 
     return new NextResponse(JSON.stringify(users), { status: 200 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.log("error", error);
-    return new NextResponse(`Error in fetching users data: ${error.message}`, {
+    return new NextResponse(`Error in fetching users data:`, {
       status: 500,
     });
   }
