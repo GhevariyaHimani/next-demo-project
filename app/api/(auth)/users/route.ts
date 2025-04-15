@@ -35,6 +35,7 @@ export const POST = async (req: Request) => {
     );
 
   } catch (error: unknown) {
+    console.log('error :>> ', error);
     return new NextResponse("Error in creating user:", {
       status: 500,
     });

@@ -31,7 +31,7 @@ export const GET = async (req: Request) => {
       return NextResponse.json("category not found");
     }
 
-    const filter: any = {
+    const filter = {
       user: new Types.ObjectId(userId),
       category: new Types.ObjectId(categoryId),
     };

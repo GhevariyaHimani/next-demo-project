@@ -6,7 +6,7 @@ import { Types } from "mongoose";
 import { URL } from "url";
 import Blog from "@/lib/modals/blog";
 
-// export const GET = async (req: Request, context: { params: any }) 
+// export const GET = async (req: Request, context: { params: Promise<{ blog: string; }> }) 
 // const blogId = context.params.blog;
 export const GET = async (req: Request,  { params }: { params: Promise<{ blog: string; }>  }) => {
   const blogId = (await params).blog;
@@ -134,7 +134,7 @@ export const DELETE = async (req: Request,  { params }: { params: Promise<{ blog
       return NextResponse.json("category not found");
     }
 
-    const deleteBlog = await Blog.findByIdAndDelete(blogId);
+    await Blog.findByIdAndDelete(blogId);
     return NextResponse.json("blog deleted successfully");
   } catch (error: unknown) {
     console.log("error", error);
