@@ -6,13 +6,13 @@ import Category from "@/lib/modals/category";
 import { types } from "node:util";
 import { use } from "react";
 
-// export const PATCH = async (req: Request, context: { params: any }) => {
+// export const PATCH = async (req: Request, context: { params: { categoryId: string } }) => {
 // const categoryId = context.params.categoryId; // part of url category/categoryId dynamic path
 export const PATCH = async (
   req: Request,
-  { params }: { params: { categoryId: string } }
+  { params }: { params: Promise<{ categoryId: string }> }
 ) => {
-  const categoryId = params.categoryId; // part of url category/categoryId dynamic path
+  const categoryId = (await params).categoryId; // part of url category/categoryId dynamic path
   try {
     const { title } = await req.json();
 
@@ -57,8 +57,8 @@ export const PATCH = async (
   }
 };
 
-export const DELETE = async (req: Request, context: { params: any }) => {
-  const categoryId = context.params.categoryId;
+export const DELETE = async (req: Request, { params }: { params: Promise<{ categoryId: string }> }) => {
+  const categoryId = (await params).categoryId;
   try {
     if (!categoryId || !Types.ObjectId.isValid(categoryId)) {
       return NextResponse.json("Missing categoryId or invalid categoryId");

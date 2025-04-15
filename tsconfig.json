@@ -25,3 +25,22 @@
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
+
+
+// {
+//   "compilerOptions": {
+//     "baseUrl": ".", // base directory
+//     "paths": {
+//       "@/*": ["./src/*"],          // Use @ to refer to src/
+//       "components/*": ["src/components/*"],
+//       "utils/*": ["src/utils/*"]
+//     }
+//   }
+// }
+
+// import Button from '../../../components/ui/Button';
+// import Button from '@/components/ui/Button';
+// or
+// import Button from 'components/ui/Button';
+
+

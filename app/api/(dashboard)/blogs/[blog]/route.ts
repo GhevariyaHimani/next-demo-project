@@ -6,8 +6,8 @@ import { Types } from "mongoose";
 import { URL } from "url";
 import Blog from "@/lib/modals/blog";
 
-export const GET = async (req: Request, context: { params: any }) => {
-  const blogId = context.params.blog;
+export const GET = async (req: Request,  { params }: { params: Promise<{ blog: string; }>  }) => {
+  const blogId = (await params).blog;
   try {
     const { searchParams } = new URL(req.url);
     const userId = searchParams.get("userId");
@@ -54,8 +54,8 @@ export const GET = async (req: Request, context: { params: any }) => {
   }
 };
 
-export const PATCH = async (req: Request, context: { params: any }) => {
-  const blogId = context.params.blog;
+export const PATCH = async (req: Request,  { params }: { params: Promise<{ blog: string; }>  }) => {
+  const blogId = (await params).blog;
   try {
     const { searchParams } = new URL(req.url);
     const userId = searchParams.get("userId");
@@ -101,8 +101,8 @@ export const PATCH = async (req: Request, context: { params: any }) => {
   }
 };
 
-export const DELETE = async (req: Request, context: { params: any }) => {
-  const blogId = context.params.blog;
+export const DELETE = async (req: Request,  { params }: { params: Promise<{ blog: string; }>  }) => {
+  const blogId = (await params).blog;
   try {
     const { searchParams } = new URL(req.url);
     const userId = searchParams.get("userId");
